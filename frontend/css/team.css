@@ -1,0 +1,239 @@
+@import "./variables.css";
+
+/* ── Heute-Box ─────────────────────────────────────────────────────── */
+.team-heute-box {
+    background: #FFF8EC;
+    border: 1.5px solid #FF9F0A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.team-heute-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #B36A00;
+    margin-bottom: var(--space-sm);
+}
+
+.team-heute-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.team-heute-card {
+    background: white;
+    border: 1.5px dashed #FFC56E;
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    min-width: 140px;
+}
+
+.team-heute-card.ganzes-team {
+    border-style: solid;
+    border-color: #FF9F0A;
+    background: #FFF2D9;
+}
+
+.team-heute-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-text);
+}
+
+.team-heute-team {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    margin: 2px 0;
+}
+
+.team-heute-grund {
+    font-size: 12px;
+    color: #B36A00;
+    font-weight: 500;
+}
+
+/* ── Gantt ──────────────────────────────────────────────────────────── */
+.team-gantt-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.team-gantt {
+    display: grid;
+    /* grid-template-columns set via JS: 140px repeat(N, minmax(28px, 1fr)) */
+    min-width: max-content;
+}
+
+/* Header row */
+.team-day-header {
+    padding: 6px 2px 4px;
+    text-align: center;
+    border-bottom: 2px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.team-day-header.wochenende {
+    background: #F5F5F7;
+}
+
+.team-day-header.heute {
+    background: #EBF4FF;
+}
+
+.team-day-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.team-day-wd {
+    font-size: 9px;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+}
+
+/* Team label column */
+.team-gantt-label {
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    border-right: 2px solid var(--color-border);
+    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.team-gantt-label.team-gantt-header-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    border-bottom: 2px solid var(--color-border);
+}
+
+/* Data cells */
+.team-gantt-cell {
+    height: 40px;
+    border-bottom: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    transition: background 0.1s;
+}
+
+.team-gantt-cell.wochenende {
+    background: #F5F5F7;
+}
+
+.team-gantt-cell.heute {
+    background: #EBF4FF;
+}
+
+.team-gantt-cell.absent-ganz {
+    background: #FF9F0A;
+    position: relative;
+}
+
+.team-gantt-cell.absent-ganz::after {
+    content: "";
+    position: absolute;
+    inset: 4px 2px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.25);
+}
+
+.team-gantt-cell.absent-einzel {
+    background: repeating-linear-gradient(
+        45deg,
+        #FFD580,
+        #FFD580 4px,
+        #FFF8EC 4px,
+        #FFF8EC 10px
+    );
+}
+
+.team-gantt-cell.heute.absent-ganz {
+    outline: 2px solid #C96D00;
+    outline-offset: -2px;
+}
+
+.team-gantt-cell.heute.absent-einzel {
+    outline: 2px solid #FF9F0A;
+    outline-offset: -2px;
+}
+
+/* ── Legende ────────────────────────────────────────────────────────── */
+.team-legende {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.team-legende-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legende-box {
+    width: 20px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.legende-box.ganzes {
+    background: #FF9F0A;
+}
+
+.legende-box.einzel {
+    background: repeating-linear-gradient(
+        45deg,
+        #FFD580,
+        #FFD580 4px,
+        #FFF8EC 4px,
+        #FFF8EC 10px
+    );
+    border: 1px solid #FFD580;
+}
+
+/* ── Warn-Badge in Termine-Spaltenheadern ───────────────────────────── */
+.team-warn-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    background: #FF9F0A;
+    border-radius: 50%;
+    margin-left: 5px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.team-warn-badge svg {
+    display: block;
+}
+
+/* Leere-State */
+.team-leer {
+    text-align: center;
+    padding: var(--space-xl);
+    color: var(--color-text-secondary);
+    font-size: 14px;
+}

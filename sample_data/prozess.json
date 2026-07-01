@@ -1,0 +1,106 @@
+{
+  "titel": "Prozess",
+  "untertitel": "Ablauf eines Glasfaser-Hausanschlusses – vom Auftragseingang bis zur Abnahme",
+  "schritte": [
+    {
+      "id": 1,
+      "titel": "Auftragseingang & Erfassung",
+      "kurz": "Neuer Auftrag kommt rein und wird ins Sheet übernommen",
+      "personen": ["Innendienst"],
+      "status": "ok",
+      "beschreibung": "Neue Aufträge kommen als Export vom Auftraggeber und werden in die zentrale Excel je Stadt übernommen. Adresse, Kunde und Kontaktdaten werden geprüft.",
+      "infos_finden": [
+        "Zentrale Excel je Stadt (Tabellenblatt = Stadt)",
+        "Kundenkontakt in Spalte U/W"
+      ],
+      "automatisierung": [
+        { "status": "voll", "tool": "SharePoint-Sync", "text": "Excel wird täglich 06:50 automatisch heruntergeladen" }
+      ],
+      "pain_points": [
+        "Doppelaufträge werden erst spät erkannt",
+        "Adressen teils unvollständig (fehlender Hausnummernzusatz)"
+      ],
+      "offene_fragen": []
+    },
+    {
+      "id": 2,
+      "titel": "VAO / Stadt-Genehmigung",
+      "kurz": "Verkehrsrechtliche Anordnung bei der Stadt beantragen",
+      "personen": ["Innendienst"],
+      "status": "pain",
+      "beschreibung": "Vor jedem Tiefbau muss die verkehrsrechtliche Anordnung (VAO) bei der Stadt vorliegen. Ohne gültige Genehmigung darf nicht gebaut werden.",
+      "infos_finden": [
+        "Genehmigungsdatum in Spalte E–G",
+        "Dashboard-Startseite: VAO-Übersicht"
+      ],
+      "automatisierung": [
+        { "status": "keine", "tool": "Stadt-Portal", "text": "Antrag noch manuell je Stadt" }
+      ],
+      "pain_points": [
+        "Bearbeitungszeit der Ämter stark schwankend (2–8 Wochen)",
+        "Ablaufende Genehmigungen werden leicht übersehen"
+      ],
+      "offene_fragen": [
+        "Kann der VAO-Status je Stadt automatisch überwacht werden?"
+      ]
+    },
+    {
+      "id": 3,
+      "titel": "Tiefbau (TB)",
+      "kurz": "Graben, Leerrohr verlegen, Hausstich setzen",
+      "personen": ["Team TB 1", "Team TB 2"],
+      "status": "ok",
+      "beschreibung": "Das Tiefbau-Team verlegt Leerrohre bis zum Haus und setzt den Hausstich. Termin und Team werden im Wochenplan (Termine) gepflegt.",
+      "infos_finden": [
+        "TB-Termin Spalte Z, TB-Team Spalte AA",
+        "Dashboard: Termine-Wochenplan"
+      ],
+      "automatisierung": [
+        { "status": "teil", "tool": "Telegram-Bot", "text": "Tages-Briefing der TB-Termine an die Gruppe" }
+      ],
+      "pain_points": [
+        "Wetterbedingte Ausfälle verschieben ganze Wochen",
+        "Kunde bei Grabung nicht angetroffen → Wartegrund"
+      ],
+      "offene_fragen": []
+    },
+    {
+      "id": 4,
+      "titel": "Installation / Einblasen (EB)",
+      "kurz": "Faser einblasen, Hausübergabepunkt montieren",
+      "personen": ["Team EB 1", "Team EB 2"],
+      "status": "ok",
+      "beschreibung": "Nach abgeschlossenem Tiefbau wird die Glasfaser eingeblasen und der Hausübergabepunkt (HÜP) im Gebäude montiert und gemessen.",
+      "infos_finden": [
+        "Inst-Termin Spalte AD, Inst-Team Spalte AE",
+        "Status Spalte AO"
+      ],
+      "automatisierung": [
+        { "status": "keine", "tool": "–", "text": "Messprotokoll noch auf Papier" }
+      ],
+      "pain_points": [
+        "Messprotokolle landen verspätet im System"
+      ],
+      "offene_fragen": [
+        "Messprotokoll digital erfassbar statt Papier?"
+      ]
+    },
+    {
+      "id": 5,
+      "titel": "Abschluss & Dokumentation",
+      "kurz": "Bauakte hochladen, Auftrag abschließen",
+      "personen": ["Innendienst"],
+      "status": "ok",
+      "beschreibung": "Die Bauakte (PDF) wird geparst, auf SharePoint abgelegt und der Auftrag auf 'abgeschlossen' gesetzt.",
+      "infos_finden": [
+        "Dashboard: Prozess → Bauakten (PDF-Upload)",
+        "Status Spalte AO = 'Auftrag abgeschlossen'"
+      ],
+      "automatisierung": [
+        { "status": "voll", "tool": "Bauakten-Parser", "text": "PDF-Felder werden automatisch ausgelesen und auf SharePoint abgelegt" }
+      ],
+      "pain_points": [],
+      "offene_fragen": []
+    }
+  ]
+}

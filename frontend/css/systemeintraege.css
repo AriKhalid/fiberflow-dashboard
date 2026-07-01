@@ -1,0 +1,111 @@
+@import "./variables.css";
+
+/* Gleiche Grid-Klassen wie termine.css werden direkt wiederverwendet */
+/* (.termine-grid-wrapper, .termine-grid, .tg-header, .tg-day, .tg-cell etc.) */
+
+.se-loading { color: var(--color-text-muted); padding: var(--space-lg); }
+
+/* Auftrag-Karte in der Zelle */
+.se-auftrag {
+    background: var(--color-surface-alt, var(--color-bg));
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    border-left: 3px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.se-auftrag:last-child { margin-bottom: 0; }
+
+/* Gleiche Farben wie .tg-termin.tb / .tg-termin.eb */
+.tg-cell.tg-row-heute .se-auftrag,
+.se-auftrag { border-left-color: var(--color-border); }
+
+.tg-header.tb ~ .tg-cell .se-auftrag { border-left-color: var(--color-blue,  #0071E3); }
+.tg-header.eb ~ .tg-cell .se-auftrag { border-left-color: var(--color-green, #34C759); }
+
+.se-auftrag-zeit {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    letter-spacing: 0.2px;
+}
+
+.se-auftrag-adresse {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.se-auftrag-kls {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+
+/* 3 Buttons untereinander */
+.se-auftrag-kreise {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.se-check-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.se-check-btn:hover:not([disabled]) {
+    border-color: #34C759;
+    color: #34C759;
+    background: #34C75910;
+}
+
+.se-check-btn.done {
+    border-color: #34C759;
+    color: #34C759;
+    background: #34C75915;
+}
+
+.se-check-btn.done:hover {
+    border-color: #FF3B30;
+    color: #FF3B30;
+    background: #FF3B3010;
+}
+
+.se-btn-na {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.se-strich { font-size: 0.7rem; }
+
+/* Farbdots */
+.se-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.se-dot-blau   { background: #0071E3; }
+.se-dot-orange { background: #FF9500; }
+.se-dot-gruen  { background: #34C759; }

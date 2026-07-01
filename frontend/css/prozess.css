@@ -1,0 +1,477 @@
+@import "./variables.css";
+
+/* ===== Layout ===== */
+.prozess-layout {
+    padding: var(--space-lg);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.prozess-loading {
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.prozess-header {
+    margin-bottom: var(--space-md);
+}
+
+.prozess-header h1 {
+    margin: 0 0 4px 0;
+    color: var(--color-text-primary);
+}
+
+.prozess-subtitle {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+/* ===== Tabs ===== */
+.prozess-tabs {
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px solid #e5e5e7;
+    margin-bottom: var(--space-md);
+}
+
+.prozess-tab {
+    background: transparent;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.prozess-tab:hover {
+    background: #f5f5f7;
+}
+
+.prozess-tab.active {
+    color: var(--color-primary, #0071e3);
+    border-bottom: 2px solid var(--color-primary, #0071e3);
+    background: transparent;
+}
+
+.prozess-tab-zahl {
+    display: inline-block;
+    background: #e5e5ea;
+    color: #555;
+    border-radius: 10px;
+    padding: 1px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+}
+
+.prozess-tab-zahl-pain {
+    background: #ffe2e2;
+    color: #c00;
+}
+
+/* ===== Pipeline ===== */
+.prozess-pipeline-wrap {
+    padding: 4px 4px 12px 4px;
+    margin-bottom: var(--space-lg);
+}
+
+.prozess-pipeline {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 22px;
+    align-items: stretch;
+}
+
+/* Kachel — 6 pro Reihe, mit 22px Lücke dazwischen */
+.prozess-kachel {
+    flex: 0 0 calc((100% - 110px) / 6);
+    min-width: 160px;
+    background: #ffffff;
+    border: 2px solid #e5e5e7;
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-right: 22px;
+    box-sizing: border-box;
+}
+
+/* Letzte Kachel jeder Reihe (6, 12, 18, ...) und allerletzte: kein margin-right */
+.prozess-kachel:nth-child(6n),
+.prozess-kachel:last-child {
+    margin-right: 0;
+}
+
+/* Pfeil zwischen Kacheln */
+.prozess-kachel:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 2px;
+    background: #d4d4d8;
+}
+
+.prozess-kachel:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #d4d4d8;
+    border-right: 2px solid #d4d4d8;
+    z-index: 1;
+}
+
+/* Bei letzter Kachel jeder Reihe (6, 12, ...): Pfeil ausblenden (sonst zeigt er ins Nichts) */
+.prozess-kachel:nth-child(6n)::after,
+.prozess-kachel:nth-child(6n)::before {
+    display: none;
+}
+
+.prozess-kachel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.prozess-kachel.active {
+    border-color: var(--color-primary, #0071e3);
+    box-shadow: 0 6px 16px rgba(0, 113, 227, 0.18);
+}
+
+/* Status-Farbring */
+.prozess-kachel-ok {
+    border-top: 4px solid #34c759;
+}
+.prozess-kachel-pain {
+    border-top: 4px solid #ff3b30;
+}
+.prozess-kachel-offen {
+    border-top: 4px solid #a1a1aa;
+    background: #fafafa;
+}
+.prozess-kachel-warn {
+    border-top: 4px solid #ff9500;
+}
+
+.prozess-kachel-nummer {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #d4d4d8;
+    line-height: 1;
+}
+
+.prozess-kachel-status-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: #fff;
+}
+.prozess-kachel-status-icon svg {
+    width: 14px;
+    height: 14px;
+}
+.prozess-kachel-status-icon-ok    { background: #34c759; }
+.prozess-kachel-status-icon-pain  { background: #ff3b30; }
+.prozess-kachel-status-icon-offen { background: #a1a1aa; }
+.prozess-kachel-status-icon-warn  { background: #ff9500; }
+
+.prozess-kachel-titel {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    padding-right: 28px;
+    line-height: 1.3;
+}
+
+.prozess-kachel-kurz {
+    font-size: 12.5px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.prozess-kachel-personen {
+    display: flex;
+    gap: 4px;
+    margin-top: auto;
+}
+
+.prozess-kachel-personen.leer {
+    font-size: 11.5px;
+    color: #c4c4c4;
+    font-style: italic;
+}
+
+.prozess-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5e9bff, #0071e3);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 600;
+    border: 2px solid #fff;
+}
+
+/* ===== Detail-Panel ===== */
+.prozess-detail {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    margin-top: var(--space-md);
+}
+
+.prozess-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.prozess-detail-titel h2 {
+    margin: 0;
+    font-size: 22px;
+    color: var(--color-text-primary);
+}
+
+.prozess-detail-nr {
+    display: inline-block;
+    background: #f5f5f7;
+    color: var(--color-text-muted);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.prozess-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.prozess-badge-ok    { background: #d4f4d8; color: #1d6c2a; }
+.prozess-badge-pain  { background: #ffe2e2; color: #c00; }
+.prozess-badge-offen { background: #f0f0f3; color: #555; }
+.prozess-badge-warn  { background: #fff3d6; color: #855900; }
+
+.prozess-detail-personen {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: var(--space-md);
+}
+
+.prozess-detail-label {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.prozess-detail-personen-liste {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.prozess-person-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f5f5f7;
+    border-radius: 14px;
+    padding: 3px 10px 3px 3px;
+    font-size: 13px;
+    color: var(--color-text-primary);
+}
+
+.prozess-person-leer {
+    color: #c4c4c4;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.prozess-detail-block {
+    margin-bottom: var(--space-md);
+}
+
+.prozess-detail-block-titel {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+}
+
+.prozess-detail-block p {
+    margin: 0;
+    line-height: 1.55;
+    color: var(--color-text-primary);
+}
+
+.prozess-detail-liste {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.prozess-detail-liste li {
+    margin-bottom: 4px;
+    color: var(--color-text-primary);
+}
+
+/* ===== Automatisierungs-Liste ===== */
+.prozess-auto-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.prozess-auto-item {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 10px;
+    align-items: baseline;
+    padding: 8px 12px;
+    background: #fafafa;
+    border-radius: 8px;
+    font-size: 13.5px;
+}
+.prozess-auto-status {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+.prozess-auto-status-aktiv   { background: #d4f4d8; color: #1d6c2a; }
+.prozess-auto-status-geplant { background: #fff3d6; color: #855900; }
+.prozess-auto-status-extern  { background: #d8e8ff; color: #0851a8; }
+.prozess-auto-status-manuell { background: #f0f0f3; color: #555; }
+.prozess-auto-tool {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+.prozess-auto-text {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+/* ===== Listen-Tabs (Pain Points / Fragen) ===== */
+.prozess-listen-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.prozess-listen-karte {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-primary, #0071e3);
+}
+
+.prozess-listen-karte-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.prozess-listen-nr {
+    background: #f5f5f7;
+    color: var(--color-text-muted);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.prozess-listen-titel {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.prozess-leer {
+    text-align: center;
+    padding: var(--space-xl);
+    color: var(--color-text-muted);
+    background: #fff;
+    border-radius: var(--radius-md);
+}
+
+/* ===== Responsive ===== */
+/* Mittel-große Screens (z.B. Tablet/kleiner Laptop): 3 pro Reihe */
+@media (max-width: 1200px) {
+    .prozess-kachel {
+        flex: 0 0 calc((100% - 44px) / 3);
+    }
+    /* Letzte Spalte = nth-child(3n) und last-child: kein margin-right */
+    .prozess-kachel:nth-child(3n),
+    .prozess-kachel:last-child {
+        margin-right: 0;
+    }
+    /* Letzte Spalte: Pfeil ausblenden */
+    .prozess-kachel:nth-child(3n)::after,
+    .prozess-kachel:nth-child(3n)::before {
+        display: none;
+    }
+}
+
+/* Schmal — alles untereinander */
+@media (max-width: 700px) {
+    .prozess-pipeline {
+        flex-direction: column;
+    }
+    .prozess-kachel {
+        flex: 1 1 auto;
+        margin-right: 0;
+        margin-bottom: 22px;
+    }
+    .prozess-kachel:not(:last-child)::after,
+    .prozess-kachel:not(:last-child)::before {
+        display: none;
+    }
+}

@@ -1,0 +1,246 @@
+{
+  "Beispielweg 87, Stadt A": [
+    52.218811,
+    10.606435
+  ],
+  "Schulstraße 76A, Stadt A": [
+    52.306928,
+    10.476115
+  ],
+  "Am Hang 109A, Stadt A": [
+    52.269361,
+    10.518888
+  ],
+  "Musterstraße 85, Stadt A": [
+    52.291223,
+    10.593519
+  ],
+  "Bahnhofstraße 86A, Stadt A": [
+    52.21314,
+    10.426236
+  ],
+  "Bahnhofstraße 106, Stadt A": [
+    52.317007,
+    10.515209
+  ],
+  "Schulstraße 19A, Stadt A": [
+    52.306719,
+    10.420463
+  ],
+  "Beispielweg 20, Stadt A": [
+    52.262354,
+    10.578739
+  ],
+  "Feldweg 97A, Stadt A": [
+    52.232027,
+    10.62796
+  ],
+  "Gartenweg 108, Stadt A": [
+    52.3262,
+    10.42673
+  ],
+  "Musterstraße 31, Stadt A": [
+    52.203562,
+    10.539111
+  ],
+  "Bahnhofstraße 119, Stadt A": [
+    52.331481,
+    10.503865
+  ],
+  "Bahnhofstraße 1, Stadt A": [
+    52.230324,
+    10.512866
+  ],
+  "Schulstraße 32B, Stadt B": [
+    52.122904,
+    10.517688
+  ],
+  "Beispielweg 8B, Stadt B": [
+    52.163789,
+    10.564288
+  ],
+  "Schulstraße 32, Stadt B": [
+    52.143308,
+    10.519247
+  ],
+  "Schulstraße 28B, Stadt B": [
+    52.141878,
+    10.558133
+  ],
+  "Lindenallee 25A, Stadt B": [
+    52.148978,
+    10.483653
+  ],
+  "Musterstraße 66, Stadt B": [
+    52.203758,
+    10.574597
+  ],
+  "Ringstraße 85A, Stadt B": [
+    52.184229,
+    10.511604
+  ],
+  "Beispielweg 2B, Stadt B": [
+    52.219254,
+    10.626191
+  ],
+  "Schulstraße 107A, Stadt B": [
+    52.132089,
+    10.536558
+  ],
+  "Gartenweg 78, Stadt B": [
+    52.192148,
+    10.600903
+  ],
+  "Am Hang 99, Stadt B": [
+    52.213644,
+    10.551758
+  ],
+  "Am Hang 75, Stadt B": [
+    52.203004,
+    10.593952
+  ],
+  "Lindenallee 119, Stadt C": [
+    52.228202,
+    9.854634
+  ],
+  "Beispielweg 49, Stadt C": [
+    52.262949,
+    9.883082
+  ],
+  "Ringstraße 43A, Stadt C": [
+    52.240317,
+    9.85479
+  ],
+  "Gartenweg 5, Stadt C": [
+    52.212072,
+    9.816701
+  ],
+  "Ringstraße 1, Stadt C": [
+    52.257844,
+    9.835575
+  ],
+  "Ringstraße 42B, Stadt C": [
+    52.22038,
+    9.850368
+  ],
+  "Ringstraße 71, Stadt C": [
+    52.252182,
+    9.864193
+  ],
+  "Feldweg 61, Stadt C": [
+    52.232482,
+    9.838286
+  ],
+  "Lindenallee 4, Stadt C": [
+    52.240506,
+    9.875629
+  ],
+  "Bahnhofstraße 19, Stadt D": [
+    51.996466,
+    9.835056
+  ],
+  "Schulstraße 18B, Stadt D": [
+    51.994279,
+    9.78414
+  ],
+  "Gartenweg 99B, Stadt D": [
+    51.963044,
+    9.878473
+  ],
+  "Lindenallee 20, Stadt D": [
+    52.028823,
+    9.863046
+  ],
+  "Musterstraße 27B, Stadt D": [
+    51.987552,
+    9.803849
+  ],
+  "Schulstraße 29A, Stadt D": [
+    51.995157,
+    9.917491
+  ],
+  "Lindenallee 80, Stadt D": [
+    52.013937,
+    9.855546
+  ],
+  "Ringstraße 42, Stadt D": [
+    52.02022,
+    9.812505
+  ],
+  "Am Hang 29, Stadt D": [
+    51.995964,
+    9.913345
+  ],
+  "Bahnhofstraße 60A, Stadt E": [
+    52.494668,
+    10.536731
+  ],
+  "Ringstraße 92, Stadt E": [
+    52.476157,
+    10.54384
+  ],
+  "Am Hang 69B, Stadt E": [
+    52.517427,
+    10.500457
+  ],
+  "Schulstraße 91, Stadt E": [
+    52.507019,
+    10.565639
+  ],
+  "Am Hang 110, Stadt E": [
+    52.513171,
+    10.55924
+  ],
+  "Schulstraße 109A, Stadt E": [
+    52.508548,
+    10.541494
+  ],
+  "Feldweg 25, Stadt E": [
+    52.493681,
+    10.534087
+  ],
+  "Beispielweg 38, Stadt E": [
+    52.463367,
+    10.569601
+  ],
+  "Feldweg 43A, Stadt E": [
+    52.4942,
+    10.515987
+  ],
+  "Bahnhofstraße 28B, Stadt F": [
+    51.88533,
+    10.572739
+  ],
+  "Musterstraße 91, Stadt F": [
+    51.874975,
+    10.551912
+  ],
+  "Gartenweg 61B, Stadt F": [
+    51.887694,
+    10.593523
+  ],
+  "Musterstraße 20, Stadt F": [
+    51.892872,
+    10.568722
+  ],
+  "Schulstraße 117B, Stadt F": [
+    51.851958,
+    10.534441
+  ],
+  "Bahnhofstraße 34, Stadt F": [
+    51.862405,
+    10.587669
+  ],
+  "Bahnhofstraße 37A, Stadt F": [
+    51.910271,
+    10.619766
+  ],
+  "Lindenallee 117A, Stadt F": [
+    51.905797,
+    10.622466
+  ],
+  "Schulstraße 89A, Stadt F": [
+    51.867871,
+    10.626262
+  ]
+}

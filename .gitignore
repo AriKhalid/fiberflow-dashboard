@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+
+# Daten / DB (keine echten Kundendaten!)
+*.db
+*.sqlite*
+*.xlsm
+*.xlsx
+*.csv
+# Ausnahme: reine Dummy-Beispieldaten gehören ins Repo (App braucht sie)
+!sample_data/beispiel_bauauftraege.xlsx
+
+# Sonstiges
+*.log
+dist/
+build/
+.DS_Store
+node_modules/

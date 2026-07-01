@@ -1,0 +1,59 @@
+:root {
+    /* Hintergründe */
+    --color-bg:           #F5F5F7;
+    --color-surface:      #FFFFFF;
+    --color-surface-alt:  #F0F0F2;
+    --color-border:       #E0E0E5;
+
+    /* Sidebar */
+    --color-sidebar-bg:   #FFFFFF;
+    --color-sidebar-hover:#F0F4FF;
+
+    /* Akzentfarben */
+    --color-blue:         #0071E3;
+    --color-blue-dark:    #0051A2;
+    --color-green:        #34C759;
+    --color-green-dark:   #1E9E45;
+    --color-orange:       #FF9500;
+    --color-orange-dark:  #CC7700;
+    --color-red:          #FF3B30;
+
+    /* Tints — helle Hintergründe für Badges & Highlights */
+    --color-blue-tint:    #E3F0FF;
+    --color-green-tint:   #E6F9ED;
+    --color-orange-tint:  #FFF3E0;
+
+    /* Heute-Highlight im Kalender */
+    --color-today-bg:     #EEF5FF;
+    --color-today-surface:#F5F9FF;
+
+    /* Text */
+    --color-text-primary:   #1D1D1F;
+    --color-text-secondary: #6E6E73;
+    --color-text-muted:     #AEAEB2;
+    --color-text-inverse:   #FFFFFF;
+
+    /* Schatten */
+    --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.12);
+
+    /* Radius */
+    --radius-sm:  6px;
+    --radius-md:  12px;
+    --radius-lg:  18px;
+
+    /* Abstände */
+    --space-xs:   4px;
+    --space-sm:   8px;
+    --space-md:   16px;
+    --space-lg:   24px;
+    --space-xl:   40px;
+
+    /* Sidebar */
+    --sidebar-width:           220px;
+    --sidebar-width-collapsed: 60px;
+
+    /* Übergänge */
+    --transition: 0.2s ease;
+}

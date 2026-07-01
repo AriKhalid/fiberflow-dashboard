@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+openpyxl
+pdfplumber
+itsdangerous
+pydantic
+python-multipart

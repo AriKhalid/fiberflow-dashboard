@@ -1,0 +1,381 @@
+@import "./variables.css";
+
+.vao-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+    margin: var(--space-md) 0 var(--space-lg) 0;
+}
+
+.vao-card-top {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: var(--space-sm);
+}
+
+.vao-stadt-dropdown {
+    position: relative;
+}
+
+.vao-stadt-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #ffffff;
+    border: 1.5px solid var(--color-blue);
+    border-radius: 999px;
+    padding: 7px 14px 7px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-blue);
+    cursor: pointer;
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.vao-stadt-trigger:hover {
+    box-shadow: 0 2px 10px rgba(0, 113, 227, 0.25);
+    transform: translateY(-1px);
+}
+
+.vao-pin-icon {
+    color: var(--color-blue);
+    flex: 0 0 auto;
+}
+
+.vao-stadt-chevron {
+    flex: 0 0 auto;
+    margin-left: 2px;
+    transition: transform var(--transition);
+}
+
+.vao-stadt-dropdown.offen .vao-stadt-chevron {
+    transform: rotate(180deg);
+}
+
+.vao-stadt-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 200px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-sm);
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+}
+
+.vao-stadt-dropdown.offen .vao-stadt-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.vao-stadt-option {
+    padding: 9px 14px;
+    margin-bottom: 2px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition), color var(--transition), padding-left var(--transition);
+}
+
+.vao-stadt-option:last-child {
+    margin-bottom: 0;
+}
+
+.vao-stadt-option:hover {
+    background: var(--color-blue-tint);
+    color: var(--color-blue-dark);
+    transform: translateX(4px);
+    padding-left: 18px;
+}
+
+.vao-stadt-option.aktiv {
+    background: var(--color-blue);
+    color: #ffffff;
+}
+
+.vao-stadt-option.aktiv:hover {
+    color: #ffffff;
+}
+
+.vao-card-text {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    margin: 0 0 var(--space-md) 0;
+}
+
+.vao-karten-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.vao-karte {
+    position: relative;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.vao-karte::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent);
+}
+
+.vao-karte::after {
+    content: "";
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.06;
+}
+
+.vao-karte:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.vao-karte-icon {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, white);
+}
+
+.vao-karte-body {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.vao-karte-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.vao-karte-zahl {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    margin-top: 4px;
+}
+
+.vao-karte-desc {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+    .vao-karten-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.home-hero-row {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.home-card {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+}
+
+.home-card-greeting {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.home-card-kalender {
+    flex: 0 0 220px;
+}
+
+.home-hero-top {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.home-hero-top h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.home-hero-datum {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.home-hero-datum svg {
+    flex: 0 0 auto;
+    color: var(--color-blue);
+}
+
+.home-wetter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.home-wetter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--color-blue-tint);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+}
+
+.home-wetter-chip-icon {
+    display: inline-flex;
+    color: var(--color-orange);
+}
+
+.kalender-header {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+    text-transform: capitalize;
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.kalender-wochentage {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 4px;
+}
+
+.kalender-wochentage span {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.kalender-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 4px;
+}
+
+.kalender-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    border-radius: 50%;
+}
+
+.kalender-tag.heute {
+    background: var(--color-blue);
+    color: #ffffff;
+    font-weight: 800;
+}
+
+@media (max-width: 700px) {
+    .home-hero-row {
+        flex-direction: column;
+    }
+    .home-card-kalender {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .home-hero-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+    }
+}
+
+.home-quicklinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.home-quicklink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-surface);
+    border-radius: 999px;
+    padding: 6px 14px 6px 6px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.home-quicklink:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.home-quicklink-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: #ffffff;
+}
+
+.home-quicklink-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.home-quicklink-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}

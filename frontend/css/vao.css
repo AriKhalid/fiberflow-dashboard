@@ -1,0 +1,215 @@
+@import "./variables.css";
+
+.vao-page-wrap {
+    padding: var(--space-lg);
+    max-width: 1500px;
+}
+
+.vao-loading {
+    color: var(--color-text-muted);
+    padding: var(--space-lg);
+}
+
+.vao-page-header {
+    margin-bottom: var(--space-lg);
+}
+
+.vao-page-titel {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 6px 0;
+}
+
+.vao-page-sub {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Two-column layout */
+.vao-spalten {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+@media (max-width: 960px) {
+    .vao-spalten {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Section */
+.vao-section {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    min-width: 0;
+}
+
+.vao-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: var(--space-md);
+}
+
+.vao-section-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.vao-dot-rot    { background: #FF3B30; }
+.vao-dot-orange { background: #FF9500; }
+
+.vao-section-titel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.vao-section-count {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    padding: 1px 9px;
+    margin-left: auto;
+}
+
+/* Filter row */
+.vao-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.vao-search {
+    flex: 1;
+    min-width: 120px;
+    padding: 6px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.vao-search:focus {
+    border-color: var(--color-primary, #0071E3);
+}
+
+/* Status chips */
+.vao-chips {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.vao-chip {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.vao-chip:hover {
+    border-color: var(--color-primary, #0071E3);
+    color: var(--color-primary, #0071E3);
+}
+
+.vao-chip-aktiv {
+    background: var(--color-primary, #0071E3);
+    border-color: var(--color-primary, #0071E3);
+    color: #fff;
+}
+
+.vao-chip-aktiv:hover {
+    color: #fff;
+}
+
+.vao-leer {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    padding: var(--space-sm) 0;
+}
+
+/* Table */
+.vao-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.vao-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.vao-table thead tr {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.vao-table th {
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.vao-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    vertical-align: middle;
+}
+
+.vao-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.vao-table tbody tr:hover {
+    background: var(--color-bg);
+}
+
+.vao-td-kls     { white-space: nowrap; font-family: monospace; font-size: 0.8rem; color: var(--color-text-muted); }
+.vao-td-datum   { white-space: nowrap; color: var(--color-text-muted); font-size: 0.8rem; }
+.vao-td-adresse { font-weight: 500; }
+.vao-td-stadt   { color: var(--color-text-muted); font-size: 0.8rem; white-space: nowrap; }
+.vao-td-tel     { color: var(--color-text-muted); font-size: 0.8rem; white-space: nowrap; }
+
+/* Badges */
+.vao-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.vao-badge-rot    { background: #FF3B3020; color: #FF3B30; }
+.vao-badge-orange { background: #FF950020; color: #CC7700; }
+.vao-badge-gelb   { background: #FFCC0020; color: #997700; }

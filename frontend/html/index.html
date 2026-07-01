@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiberFlow Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230071E3'/><text y='.9em' font-size='80' x='10'>G</text></svg>">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Eigene Styles -->
+    <link rel="stylesheet" href="/static/css/variables.css">
+    <link rel="stylesheet" href="/static/css/typography.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/maps.css">
+    <link rel="stylesheet" href="/static/css/kpi.css">
+    <link rel="stylesheet" href="/static/css/termine.css">
+    <link rel="stylesheet" href="/static/css/auftraege.css">
+    <link rel="stylesheet" href="/static/css/todos.css">
+    <link rel="stylesheet" href="/static/css/kontakte.css">
+    <link rel="stylesheet" href="/static/css/team.css">
+    <link rel="stylesheet" href="/static/css/prozess.css">
+    <link rel="stylesheet" href="/static/css/vao.css">
+    <link rel="stylesheet" href="/static/css/systemeintraege.css">
+    <link rel="stylesheet" href="/static/css/bauakten.css">
+
+    <style>
+        .page { display: none; }
+        .page.active { display: block; }
+        .page-placeholder {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-lg);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar" class="sidebar"></div>
+
+    <div id="main-content" class="main-content">
+        <div id="page-home" class="page active"></div>
+        <div id="page-maps" class="page"></div>
+        <div id="page-kpi" class="page"></div>
+        <div id="page-termine" class="page"></div>
+        <div id="page-auftraege" class="page">
+            <h1>Aufträge</h1>
+            <div class="page-placeholder"><p>Auftragstabelle kommt hier.</p></div>
+        </div>
+        <div id="page-team" class="page"></div>
+        <div id="page-todos" class="page"></div>
+        <div id="page-kontakte" class="page"></div>
+        <div id="page-prozess" class="page"></div>
+        <div id="page-vao" class="page"></div>
+        <div id="page-systemeintraege" class="page"></div>
+        <div id="page-bauakten" class="page"></div>
+    </div>
+
+    <script src="/static/js/sidebar.js"></script>
+    <script src="/static/js/home.js"></script>
+    <script src="/static/js/maps.js"></script>
+    <script src="/static/js/kpi.js"></script>
+    <script src="/static/js/termine.js"></script>
+    <script src="/static/js/auftraege.js"></script>
+    <script src="/static/js/team.js"></script>
+    <script src="/static/js/todos.js"></script>
+    <script src="/static/js/kontakte.js"></script>
+    <script src="/static/js/prozess.js"></script>
+    <script src="/static/js/vao.js"></script>
+    <script src="/static/js/systemeintraege.js"></script>
+    <script src="/static/js/bauakten.js"></script>
+    <script>
+        let mapsPage      = null;
+        let kpiPage       = null;
+        let terminePage   = null;
+        let auftraegePage = null;
+        let teamPage      = null;
+        let todosPage     = null;
+        let kontaktePage  = null;
+        let prozessPage   = null;
+        let vaoPage              = null;
+        let systemeintraegePage  = null;
+        let bauaktenPage         = null;
+
+        const sidebar = new Sidebar({
+            onSubPageChange(subId) {
+                if (kpiPage) kpiPage.setSubPage(subId);
+            },
+            onRefresh() {
+                if (mapsPage)      mapsPage.reload();
+                if (kpiPage)       kpiPage.reload();
+                if (terminePage)   terminePage.reload();
+                if (auftraegePage) auftraegePage.reload();
+                if (vaoPage)             vaoPage.reload();
+                if (systemeintraegePage) systemeintraegePage.reload();
+                if (bauaktenPage)        bauaktenPage.reload();
+            },
+            onPageChange(pageId) {
+                document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+                document.getElementById("page-" + pageId).classList.add("active");
+                if (pageId === "maps") {
+                    if (!mapsPage) mapsPage = new MapsPage();
+                    else setTimeout(() => mapsPage.map && mapsPage.map.invalidateSize(), 200);
+                }
+                if (pageId === "kpi"       && !kpiPage)       kpiPage       = new KpiPage();
+                if (pageId === "termine"   && !terminePage)   terminePage   = new TerminePage();
+                if (pageId === "auftraege" && !auftraegePage) auftraegePage = new AuftraegePage();
+                if (pageId === "team"      && !teamPage)      teamPage      = new TeamPage();
+                if (pageId === "todos"     && !todosPage)     todosPage     = new TodosPage();
+                if (pageId === "kontakte"  && !kontaktePage)  kontaktePage  = new KontaktePage();
+                if (pageId === "prozess"   && !prozessPage)   prozessPage   = new ProzessPage();
+                if (pageId === "vao"              && !vaoPage)             vaoPage             = new VaoPage();
+                if (pageId === "systemeintraege"  && !systemeintraegePage) systemeintraegePage = new SystemeintraegePage();
+                if (pageId === "bauakten"         && !bauaktenPage)        bauaktenPage        = new BauaktenPage();
+            },
+            onStadtChange(stadt) {
+                if (mapsPage)      mapsPage.setStadt(stadt);
+                if (kpiPage)       kpiPage.setStadt(stadt);
+                if (terminePage)   terminePage.setStadt(stadt);
+                if (auftraegePage) auftraegePage.setStadt(stadt);
+                if (vaoPage)             vaoPage.setStadt(stadt);
+                if (systemeintraegePage) systemeintraegePage.setStadt(stadt);
+                if (todosPage)           todosPage.setStadt(stadt);
+            }
+        });
+
+        new HomePage(pageId => sidebar.setActivePage(pageId));
+    </script>
+</body>
+</html>

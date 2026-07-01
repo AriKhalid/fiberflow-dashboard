@@ -1,0 +1,397 @@
+@import "./variables.css";
+
+/* Wochen-Navigation */
+.termine-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: 6px 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.termine-nav-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.termine-nav-btn:hover:not(:disabled) {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-text-inverse);
+}
+
+.termine-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.termine-nav-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    min-width: 160px;
+}
+
+.nav-range {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Heute-Badge in Tageszelle */
+.tg-heute-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--color-blue);
+    background: var(--color-blue-tint);
+    padding: 1px 5px;
+    border-radius: var(--radius-sm);
+    margin-top: var(--space-xs);
+}
+
+/* Grid-Wrapper */
+.termine-grid-wrapper {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: auto;
+    max-height: calc(100vh - 185px);
+}
+
+.termine-grid {
+    display: grid;
+    grid-template-columns: 72px repeat(5, minmax(180px, 1fr));
+    min-width: 600px;
+}
+
+/* Zelle allgemein */
+.tg-cell {
+    padding: 10px 12px;
+    border-right: 2px solid #1D1D1F;
+    border-bottom: 2px solid #1D1D1F;
+    min-height: 64px;
+}
+
+.tg-cell:last-child { border-right: none; }
+
+/* Team hat Urlaub/Abwesenheit an diesem Tag */
+.tg-cell-urlaub {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 7px,
+        rgba(220, 38, 38, 0.18) 7px,
+        rgba(220, 38, 38, 0.18) 9px
+    );
+}
+
+/* Header-Zeile */
+.tg-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-surface);
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    text-align: center;
+    border-bottom: 3px solid #1D1D1F;
+    border-right: 2px solid #1D1D1F;
+}
+
+.tg-header:last-child { border-right: none; }
+
+.tg-header-corner {
+    position: sticky;
+    top: 0;
+    z-index: 11;
+    background: var(--color-surface);
+    border-bottom: 3px solid #1D1D1F;
+    border-right: 2px solid #1D1D1F;
+}
+
+.tg-header.tb { color: var(--color-blue); }
+.tg-header.eb { color: var(--color-green); }
+
+/* Tages-Zelle (linke Spalte) */
+.tg-day {
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    background: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 12px 8px;
+    border-right: 3px solid #1D1D1F;
+    border-bottom: 2px solid #1D1D1F;
+}
+
+.tg-day-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.tg-day-date {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+/* Heute hervorheben */
+.tg-row-heute .tg-day              { background: var(--color-today-bg); }
+.tg-row-heute .tg-day .tg-day-name { color: var(--color-blue); }
+.tg-row-heute .tg-cell             { background: var(--color-today-surface); }
+.tg-row-heute .tg-slot.frei        { background: color-mix(in srgb, var(--color-today-surface) 80%, transparent); }
+
+/* Zellen mit Zeitslots */
+.tg-cell-slots {
+    padding: 0 !important;
+    position: relative;
+}
+
+/* Zeitslot-Block */
+.tg-slot {
+    padding: 4px 8px;
+    border-bottom: 1px dashed var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-height: 28px;
+}
+
+.tg-slot.belegt {
+    min-height: 52px;
+    padding: 6px 8px;
+}
+
+.tg-slot:last-child {
+    border-bottom: none;
+}
+
+.tg-slot.frei {
+    background: transparent;
+}
+
+/* Uhrzeit-Label oben im Block */
+.tg-slot-zeit {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    letter-spacing: 0.2px;
+}
+
+/* Termin-Card im Grid */
+.tg-termin {
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    border-left: 4px solid transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    cursor: pointer;
+}
+
+.tg-termin:hover { opacity: 0.85; }
+
+.tg-termin.tb { border-left-color: var(--color-blue);  background: var(--color-blue-tint); }
+.tg-termin.eb { border-left-color: var(--color-green); background: var(--color-green-tint); }
+
+.tg-termin-adresse {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Copy-Button pro Zelle (Tag × Team) */
+.tg-cell-copy-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.tg-cell-copy-btn:hover {
+    background: var(--color-surface-alt);
+    color: var(--color-text-primary);
+    border-color: var(--color-text-muted);
+}
+
+.tg-cell-copy-btn.copied {
+    color: var(--color-green);
+    border-color: var(--color-green);
+}
+
+.tg-termin-name {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Detail-Panel */
+.detail-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: transparent;
+}
+
+.detail-panel {
+    position: fixed;
+    top: 50%;
+    right: var(--space-lg);
+    transform: translateY(-50%) translateX(20px);
+    z-index: 201;
+    width: 320px;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.detail-panel.visible {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.detail-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.detail-panel-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+}
+
+.detail-panel-close {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    transition: background var(--transition);
+}
+
+.detail-panel-close:hover { background: var(--color-border); }
+
+.detail-panel-body {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.detail-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--color-text-muted);
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 13px;
+    color: var(--color-text-primary);
+}
+
+.detail-row svg {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+}
+
+.detail-kommentar {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm) var(--space-md);
+    line-height: 1.5;
+    border-left: 3px solid var(--color-border);
+}
+
+.detail-kommentar.tb   { border-left-color: var(--color-blue); }
+.detail-kommentar.inst { border-left-color: var(--color-green); }
+
+.detail-typ-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.detail-typ-badge.tb   { background: var(--color-blue-tint);   color: var(--color-blue); }
+.detail-typ-badge.inst { background: var(--color-green-tint);  color: var(--color-green-dark); }
+
+.detail-row.genehm-ja   { color: var(--color-green-dark); font-size: 13px; display: flex; align-items: center; gap: var(--space-sm); }
+.detail-row.genehm-nein { color: var(--color-red); font-size: 13px; }
+.genehm-datum { font-size: 12px; color: var(--color-text-muted); font-weight: 600; }

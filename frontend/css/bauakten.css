@@ -1,0 +1,439 @@
+@import "./variables.css";
+
+.bauakten-layout {
+    /* Drop-Zone Farben — 1:1 aus CodePen jukha/ExJaqRp */
+    --upload-primary:       #00b3bb;
+    --upload-primary-glare: #00cdd7;
+    --upload-primary-half:  #80d9dd;
+    --upload-primary-eighth:#dff5f7;
+    --upload-primary-pale:  #f3f5f7;
+    --upload-text:          #0f3c4b;
+
+    padding: var(--space-lg);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.bauakten-header {
+    margin-bottom: var(--space-lg);
+}
+
+.bauakten-header h1 {
+    margin: 0 0 var(--space-xs) 0;
+}
+
+.bauakten-subtitle {
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* === Drop-Zone (Pen-Stil) === */
+.upload_dropZone {
+    color: var(--upload-text);
+    background-color: var(--upload-primary-pale);
+    outline: 2px dashed var(--upload-primary-half);
+    outline-offset: -12px;
+    border: 0;
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin: 0 0 var(--space-lg) 0;
+    transition:
+        outline-offset 0.2s ease-out,
+        outline-color 0.3s ease-in-out,
+        background-color 0.2s ease-out;
+}
+
+.upload_dropZone.highlight {
+    outline-offset: -4px;
+    outline-color: var(--upload-primary);
+    background-color: var(--upload-primary-eighth);
+}
+
+.upload_svg {
+    fill: var(--upload-primary);
+    width: 60px;
+    height: 60px;
+}
+
+.upload_dropZone p {
+    margin: 0.5rem 0;
+    font-size: 14px;
+}
+
+.upload_dropZone p i {
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+.btn-upload {
+    display: inline-block;
+    color: #fff;
+    background-color: var(--upload-primary);
+    border: 0;
+    border-radius: var(--radius-sm);
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color var(--transition);
+}
+
+.btn-upload:hover,
+.btn-upload:focus {
+    background-color: var(--upload-primary-glare);
+    color: #fff;
+}
+
+.upload_input_hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.upload_legend_hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+}
+
+/* === Upload-Status (pro Datei) === */
+.upload_gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+    text-align: left;
+}
+
+.upload_gallery:empty { display: none; }
+
+.upload_item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    box-shadow: var(--shadow-sm);
+}
+
+.upload_badge {
+    flex: 0 0 auto;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.upload_badge.ok       { background: var(--color-green-tint);  color: var(--color-green-dark); }
+.upload_badge.warnung  { background: var(--color-orange-tint); color: var(--color-orange-dark); }
+.upload_badge.duplikat { background: var(--color-orange-tint); color: var(--color-orange-dark); }
+.upload_badge.fehler   { background: #FDECEC;                  color: var(--color-red); }
+.upload_badge.lade     { background: var(--upload-primary-eighth); color: var(--upload-primary); }
+
+.upload_item_text {
+    flex: 1;
+    color: var(--color-text-primary);
+    word-break: break-word;
+}
+
+.upload_item_text strong { font-weight: 600; }
+.upload_item_text .warn {
+    color: var(--color-orange-dark);
+    margin-left: var(--space-xs);
+}
+
+/* === Karten-Liste === */
+.bauakten-liste-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 var(--space-xs) var(--space-md) var(--space-xs);
+}
+
+.bauakten-liste-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.bauakten-liste-header .anzahl {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+}
+
+/* === Tabellen-Ansicht === */
+.bauakten-tabelle-wrapper {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: auto;
+    max-width: 100%;
+}
+
+.bauakten-tabelle {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.bauakten-tabelle thead th {
+    position: sticky;
+    top: 0;
+    background: var(--upload-primary-pale);
+    color: var(--upload-text);
+    text-align: left;
+    padding: 0;
+    border-bottom: 2px solid var(--upload-primary-half);
+    z-index: 1;
+}
+
+.th-inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: var(--space-sm) var(--space-md);
+}
+
+.th-spalte {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 16px;
+    padding: 0 4px;
+    background: var(--upload-primary-eighth);
+    color: var(--upload-primary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.th-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+/* Stadt-Trennzeile: pro Spalte ein Copy-Button, NUR für diese Stadt
+   (Städte dürfen sich nicht vermischen — jede Stadt hat ihr eigenes Excel-Sheet) */
+.tabelle-gruppe td {
+    background: var(--upload-primary-pale);
+    border-bottom: 1px solid var(--upload-primary-half);
+    padding: 4px 6px;
+    position: sticky;
+    top: 37px;
+    z-index: 1;
+}
+
+.gruppe-zelle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.gruppe-stadt-label {
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--upload-text);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.gruppen-col-copy {
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    flex: 0 0 auto;
+    background: transparent;
+    border: 1px solid var(--upload-primary-half);
+    border-radius: var(--radius-sm);
+    color: var(--upload-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.gruppen-col-copy:hover {
+    background: var(--upload-primary-eighth);
+}
+
+.gruppen-col-copy svg { width: 13px; height: 13px; }
+
+.gruppen-block-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    background: var(--upload-primary);
+    color: #fff;
+    border: 0;
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.gruppen-block-copy:hover { background: var(--upload-primary-glare); }
+.gruppen-block-copy svg { width: 13px; height: 13px; flex: 0 0 auto; }
+
+.bauakten-tabelle tbody tr:hover {
+    background: var(--color-surface-alt);
+}
+
+.bauakten-tabelle tbody tr:nth-child(even) {
+    background: rgba(0,0,0,0.012);
+}
+
+.tabelle-zelle {
+    padding: 7px var(--space-md);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    border-bottom: 1px solid var(--color-border);
+    transition: background var(--transition);
+}
+
+.tabelle-zelle:hover {
+    background: var(--upload-primary-eighth);
+}
+
+.tabelle-zelle.leer {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.tabelle-zelle.kopiert {
+    background: var(--color-green-tint) !important;
+}
+
+/* Visuell hervorheben: P–W ist im Excel ein zusammenhängender Block */
+th.block-pw, td.block-pw {
+    background: linear-gradient(0deg, rgba(0,179,187,0.04), rgba(0,179,187,0.04));
+}
+
+th.block-pw-start, td.block-pw-start { border-left: 2px solid var(--upload-primary-half); }
+th.block-pw-ende,  td.block-pw-ende  { border-right: 2px solid var(--upload-primary-half); }
+
+.tabelle-status {
+    padding: 7px var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.status-icon {
+    margin: 0 2px;
+    cursor: default;
+}
+
+.status-icon.ok   { color: var(--color-green); }
+.status-icon.warn { color: var(--color-orange-dark); }
+
+.tabelle-zeit {
+    padding: 7px var(--space-md);
+    color: var(--color-text-muted);
+    font-size: 11px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tabelle-aktionen {
+    padding: 7px var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.zeile-copy {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    flex: 0 0 auto;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.zeile-copy:hover {
+    background: var(--upload-primary-eighth);
+    color: var(--upload-primary);
+    border-color: var(--upload-primary-half);
+}
+
+.zeile-copy svg { width: 14px; height: 14px; }
+
+.zeile-erledigt {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.zeile-erledigt:hover {
+    background: var(--color-green-tint);
+    color: var(--color-green-dark);
+    border-color: var(--color-green);
+}
+
+/* Icon-Swap (Copy → Check) bei allen Copy-Buttons der Tabelle */
+.gruppen-col-copy .icon-check,
+.zeile-copy .icon-check { display: none; color: var(--color-green); }
+.gruppen-col-copy.kopiert,
+.zeile-copy.kopiert {
+    background: var(--color-green-tint);
+    border-color: var(--color-green);
+    color: var(--color-green-dark);
+}
+.gruppen-col-copy.kopiert .icon-copy,  .zeile-copy.kopiert .icon-copy  { display: none; }
+.gruppen-col-copy.kopiert .icon-check, .zeile-copy.kopiert .icon-check { display: block; }
+
+.gruppen-block-copy .icon-check { display: none; }
+.gruppen-block-copy.kopiert { background: var(--color-green-dark); }
+.gruppen-block-copy.kopiert .icon-copy  { display: none; }
+.gruppen-block-copy.kopiert .icon-check { display: block; }
+
+.bauakten-leer {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-xl);
+    text-align: center;
+    color: var(--color-text-secondary);
+}
