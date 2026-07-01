@@ -169,12 +169,12 @@ def load_kpi_status() -> dict:
 
 def load_kpi_wochentlich() -> dict:
     if not os.path.exists(EXCEL_PATH):
-        return {"bau": {}, "telekom": {}}
+        return {"bau": {}, "aktivierung": {}}
     wb = openpyxl.load_workbook(EXCEL_PATH, read_only=True, keep_vba=False, data_only=True)
 
     staedte = ["Stadt A", "Stadt B", "Stadt D", "Stadt C", "Stadt E", "Stadt F"]
     bau: dict     = {}  # {kw: {stadt: count}}
-    telekom: dict = {}  # {kw: {stadt: count}}
+    aktivierung: dict = {}  # {kw: {stadt: count}}
 
     for stadt in staedte:
         if stadt not in wb.sheetnames:
@@ -194,13 +194,13 @@ def load_kpi_wochentlich() -> dict:
             if kw_tel:
                 try:
                     kw = int(kw_tel)
-                    telekom.setdefault(kw, {}).setdefault(stadt, 0)
-                    telekom[kw][stadt] += 1
+                    aktivierung.setdefault(kw, {}).setdefault(stadt, 0)
+                    aktivierung[kw][stadt] += 1
                 except (ValueError, TypeError):
                     pass
 
     wb.close()
-    return {"bau": bau, "telekom": telekom}
+    return {"bau": bau, "aktivierung": aktivierung}
 
 
 def load_ansprechpartner() -> list[dict]:

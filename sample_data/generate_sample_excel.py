@@ -85,7 +85,7 @@ def _fuelle_stadt(ws, stadt, n):
         if status in ("TB abgeschlossen", "Auftrag abgeschlossen", "Prozess abgeschlossen"):
             _cell(ws, r, "AR", kw)  # KW Tiefbau fertig
         if status in ("Installation abgeschlossen", "Prozess abgeschlossen"):
-            _cell(ws, r, "AT", kw + random.randint(1, 3))  # KW Telekom fertig
+            _cell(ws, r, "AT", kw + random.randint(1, 3))  # KW Anschluss-Aktivierung fertig
 
 
 def _fuelle_ansprechpartner(ws):
